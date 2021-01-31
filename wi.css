@@ -1,0 +1,33 @@
+
+body {
+  margin: 0;
+  background-color: #eee;
+}
+
+.window {
+  width: 100px;
+  height: 100px;
+  background-color: #ddd;
+  position: fixed;
+  outline: 1px solid #AAA;
+  min-width: 200px;
+}
+  .windowHeader {
+    width: 100%;
+    height: 15px;
+    background-color: #ccc;
+    font-size: 12px;
+    text-align: right;
+    
+  }
+    .windowHeaderResize {
+      width: 15px;
+      height: 15px;
+      background-image: url(ui/resize.svg);
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #bbb;
+      float: left;
+    }
+      .windowHeaderResize:hover { background-color: #ddd; }

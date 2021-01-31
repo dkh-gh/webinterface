@@ -1,0 +1,21 @@
+
+modules = [
+  {
+    "name": "Первый Код 3",
+    "type": "windowed",
+    "sourceType": "href",
+    "source": "https://холостов.рф/первыйКод3"
+  },
+  {
+    "name": "Сайт создателя",
+    "type": "windowed",
+    "sourceType": "href",
+    "source": "https://холостов.рф/"
+  },
+  {
+    "name": "Погода",
+    "type": "windowed",
+    "sourceType": "href",
+    "source": "https://wttr.in/moscow"
+  }
+]

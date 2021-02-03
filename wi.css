@@ -31,3 +31,13 @@ body {
       float: left;
     }
       .windowHeaderResize:hover { background-color: #ddd; }
+
+.panel {
+  position: fixed;
+  left: 0px; top: 0px;
+  width: 0px; height: 0px;
+  overflow: hidden;
+}
+  .panel div {
+    width: inherit; height: inherit;
+  }

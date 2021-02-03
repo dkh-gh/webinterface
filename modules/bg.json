@@ -1,0 +1,22 @@
+background_dkh = {
+  "init": function() {
+    window.addEventListener('load', function() {
+      document.getElementById('background_dkh').addEventListener('click', function() {
+        document.getElementById('background_dkh').style.backgroundImage = 'url(http://холостов.рф/siteFiles/img/bg/' + parseInt(Math.random()*19) + '.jpg)';
+        //preventDefault();
+      });
+    });
+  },
+  "html": '\
+    <div id="background_dkh" class="background_dkh"></div>\
+  ',
+  "css": '\
+    .background_dkh {\
+      width: 100%;\
+      height: 100%;\
+      background-image: url(http://холостов.рф/siteFiles/img/bg/13.jpg);\
+      background-size: cover;\
+      background-position: center;\
+    }\
+  '
+} 

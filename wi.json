@@ -1,6 +1,19 @@
 
 modules = [
   {
+    "title": "",
+    "name": "background_dkh",
+    "type": "panel",
+    "panel": {
+      "width": "100%",
+      "height": "100%",
+      "left": "0px",
+      "top": "0px"
+    },
+    "sourceType": "local",
+    "source": "modules/bg.json"
+  },
+  {
     "title": "Первый Код 3",
     "name": "first_code_3_site",
     "type": "windowed",

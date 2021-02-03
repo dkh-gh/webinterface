@@ -1,19 +1,22 @@
 
 modules = [
   {
-    "name": "Первый Код 3",
+    "title": "Первый Код 3",
+    "name": "first_code_3_site",
     "type": "windowed",
     "sourceType": "href",
     "source": "https://холостов.рф/первыйКод3"
   },
   {
-    "name": "Сайт создателя",
+    "title": "Часы",
+    "name": "clock_dkh",
     "type": "windowed",
-    "sourceType": "href",
-    "source": "https://холостов.рф/"
+    "sourceType": "local",
+    "source": "modules/clock.json"
   },
   {
-    "name": "Погода",
+    "title": "Погода",
+    "name": "weather_site",
     "type": "windowed",
     "sourceType": "href",
     "source": "https://wttr.in/moscow"

@@ -10,6 +10,7 @@ body {
   background-color: #ddd;
   position: fixed;
   outline: 1px solid #AAA;
+  overflow: hidden;
 }
   .windowHeader {
     width: 100%;
@@ -17,7 +18,7 @@ body {
     background-color: #ccc;
     font-size: 12px;
     text-align: right;
-    
+    user-select: none;
   }
     .windowHeaderResize {
       width: 15px;

@@ -1,0 +1,25 @@
+clock_dkh = {
+  "init": function() {
+    var clock_dkh_time = new Date();
+  },
+  "update": function() {
+    var clock_dkh_time = new Date();
+    clock_dkh_hours = clock_dkh_time.getHours();
+    clock_dkh_minutes= clock_dkh_time.getMinutes();
+    clock_dkh_seconds = clock_dkh_time.getSeconds();
+    if(clock_dkh_hours < 10) clock_dkh_hours = "0"+clock_dkh_hours;
+    if(clock_dkh_minutes < 10) clock_dkh_minutes = "0"+clock_dkh_minutes;
+    if(clock_dkh_seconds < 10) clock_dkh_seconds = "0"+clock_dkh_seconds;
+    document.getElementById('clock_dkh').innerHTML = clock_dkh_hours + ':' + clock_dkh_minutes + ':' + clock_dkh_seconds;
+  },
+  "updateTime": 500,
+  "html": '\
+    <div id="clock_dkh" class="clock_dkh">00:00:00</div>\
+  ',
+  "css": '\
+    .clock_dkh {\
+      text-align: center;\
+      font-size: 30px;\
+    }\
+  '
+} 

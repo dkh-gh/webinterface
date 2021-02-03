@@ -1,6 +1,15 @@
 
 windows = [];
 
+function include_module(url, wNum) {
+  let script = document.createElement('script');
+  script.src = url;
+  document.getElementsByTagName('head')[0].appendChild(script);
+  script.addEventListener('load', function() {
+    windows[wNum]['object']['preInit']();
+  });
+}
+
 window.addEventListener('DOMContentLoaded', function() {
   
   for(let i = 0; i < modules.length; i++) {
@@ -8,7 +17,6 @@ window.addEventListener('DOMContentLoaded', function() {
       windows.push({});
       
       windows[i]['name'] = modules[i]['name'];
-      windows[i]['id'] = 'w' + ( parseInt(Math.random() * 100000000000));
       windows[i]['win'] = {
         'win': document.createElement('div'),
         'header': document.createElement('div'),
@@ -16,9 +24,7 @@ window.addEventListener('DOMContentLoaded', function() {
       };
       // win setup
       windows[i]['win']['win'].appendChild(windows[i]['win']['header']);
-      windows[i]['win']['win'].id = windows[i]['id'];
       windows[i]['win']['win'].className = 'window';
-      console.info(localStorage.getItem(windows[i]['name']));
       if(localStorage.getItem(windows[i]['name']) == null) {
         windows[i]['win']['win'].style.top = '0px';
         windows[i]['win']['win'].style.left = '0px';
@@ -32,7 +38,6 @@ window.addEventListener('DOMContentLoaded', function() {
         windows[i]['win']['win'].style.width = wInfo['width'];
         windows[i]['win']['win'].style.height = wInfo['height'];
       }
-      //windows[i]['win']['win'].style.overflow = 'hidden';
       windows[i]['win']['win'].style.zIndex = 10000 + i;
       if(modules[i]['sourceType'] == 'href') {
         windows[i]['win']['winFrame'] = document.createElement('iframe');
@@ -42,9 +47,27 @@ window.addEventListener('DOMContentLoaded', function() {
         windows[i]['win']['winFrame'].style.border = 'none';
         windows[i]['win']['win'].appendChild(windows[i]['win']['winFrame']);
       }
+      else if(modules[i]['sourceType'] == 'local') {
+        windows[i]['win']['win']['body'] = document.createElement('div');
+        windows[i]['win']['win'].appendChild(windows[i]['win']['win']['body']);
+        include_module(modules[i]['source'], i);
+        windows[i]['object'] = {};
+        windows[i]['object']['preInit'] = function() {
+          windows[i]['object']['structure'] = window[modules[i]['name']];
+          windows[i]['object']['structure']['init']();
+          if(windows[i]['object']['structure']['update']) 
+            window.setInterval(function() { windows[i]['object']['structure']['update']() }, windows[i]['object']['structure']['updateTime']);
+          if(windows[i]['object']['structure']['html']) 
+            windows[i]['win']['win']['body'].innerHTML += windows[i]['object']['structure']['html'];
+          if(windows[i]['object']['structure']['css']) {
+            let newStyles = document.createElement('style');
+            newStyles.innerText = windows[i]['object']['structure']['css'];
+            document.head.appendChild(newStyles);
+          }
+        }
+      }
       // header setup
-      windows[i]['win']['header'].id = windows[i]['win']['win'].id+'h';
-      windows[i]['win']['header'].innerHTML = modules[i]['name'];
+      windows[i]['win']['header'].innerHTML = modules[i]['title'];
       windows[i]['win']['header'].className = 'windowHeader';
       windows[i]['win']['header'].appendChild(windows[i]['win']['resizeButton']);
       // buttons setup
@@ -104,7 +127,6 @@ window.addEventListener('DOMContentLoaded', function() {
         window.setTimeout(windows[i]['win']['anim'], 10);
       }
       windows[i]['win']['anim']();
-      
       document.body.appendChild(windows[i]['win']['win']);
     }
   }

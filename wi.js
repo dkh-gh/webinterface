@@ -1,5 +1,4 @@
 
-
 windows = [];
 
 window.addEventListener('DOMContentLoaded', function() {
@@ -7,6 +6,7 @@ window.addEventListener('DOMContentLoaded', function() {
   for(let i = 0; i < modules.length; i++) {
     if(modules[i]['type'] == 'windowed') {
       windows.push({});
+      
       windows[i]['name'] = modules[i]['name'];
       windows[i]['id'] = 'w' + ( parseInt(Math.random() * 100000000000));
       windows[i]['win'] = {
@@ -18,10 +18,20 @@ window.addEventListener('DOMContentLoaded', function() {
       windows[i]['win']['win'].appendChild(windows[i]['win']['header']);
       windows[i]['win']['win'].id = windows[i]['id'];
       windows[i]['win']['win'].className = 'window';
-      windows[i]['win']['win'].style.top = '0px';
-      windows[i]['win']['win'].style.left = '0px';
-      windows[i]['win']['win'].style.width = '300px';
-      windows[i]['win']['win'].style.height = '300px';
+      console.info(localStorage.getItem(windows[i]['name']));
+      if(localStorage.getItem(windows[i]['name']) == null) {
+        windows[i]['win']['win'].style.top = '0px';
+        windows[i]['win']['win'].style.left = '0px';
+        windows[i]['win']['win'].style.width = '300px';
+        windows[i]['win']['win'].style.height = '300px';
+      }
+      else {
+        let wInfo = JSON.parse(localStorage.getItem(windows[i]['name']));
+        windows[i]['win']['win'].style.top = wInfo['top'];
+        windows[i]['win']['win'].style.left = wInfo['left'];
+        windows[i]['win']['win'].style.width = wInfo['width'];
+        windows[i]['win']['win'].style.height = wInfo['height'];
+      }
       //windows[i]['win']['win'].style.overflow = 'hidden';
       windows[i]['win']['win'].style.zIndex = 10000 + i;
       if(modules[i]['sourceType'] == 'href') {
@@ -84,6 +94,13 @@ window.addEventListener('DOMContentLoaded', function() {
           windows[i]['win']['winFrame'].style.width = windows[i]['win']['win'].style.width;
           windows[i]['win']['winFrame'].style.height = parseInt(windows[i]['win']['win'].style.height) - 15 + 'px';
         }
+        let wInfo = JSON.stringify({
+          'top': windows[i]['win']['win'].style.top,
+          'left': windows[i]['win']['win'].style.left,
+          'width': windows[i]['win']['win'].style.width,
+          'height': windows[i]['win']['win'].style.height
+        });
+        localStorage.setItem(windows[i]['name'], wInfo);
         window.setTimeout(windows[i]['win']['anim'], 10);
       }
       windows[i]['win']['anim']();
@@ -98,7 +115,7 @@ window.addEventListener('DOMContentLoaded', function() {
 mouseX = 0;
 mouseY = 0;
 
-document.addEventListener('mousemove', function(mouse) {
+window.addEventListener('mousemove', function(mouse) {
   mouseX = mouse.clientX;
   mouseY = mouse.clientY;
 });

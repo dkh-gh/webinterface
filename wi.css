@@ -10,7 +10,6 @@ body {
   background-color: #ddd;
   position: fixed;
   outline: 1px solid #AAA;
-  min-width: 200px;
 }
   .windowHeader {
     width: 100%;

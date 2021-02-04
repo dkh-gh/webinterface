@@ -1,7 +1,5 @@
 clock_dkh = {
-  "init": function() {
-    var clock_dkh_time = new Date();
-  },
+  "init": function() {},
   "update": function() {
     var clock_dkh_time = new Date();
     clock_dkh_hours = clock_dkh_time.getHours();

@@ -1,7 +1,6 @@
 
 modules = [
   {
-    "title": "",
     "name": "background_dkh",
     "type": "panel",
     "panel": {
@@ -33,5 +32,29 @@ modules = [
     "type": "windowed",
     "sourceType": "href",
     "source": "https://wttr.in/moscow"
+  },
+  {
+    "name": "panel_dkh",
+    "type": "panel",
+    "panel": {
+      "width": "100%",
+      "height": "40px",
+      "left": "0px",
+      "bottom": "0px"
+    },
+    "sourceType": "local",
+    "source": "modules/panel.json"
+  },
+  {
+    "name": "lock_panel_dkh",
+    "type": "panel",
+    "panel": {
+      "width": "100%",
+      "height": "100%",
+      "left": "0px",
+      "top": "0px"
+    },
+    "sourceType": "local",
+    "source": "modules/lock.json"
   }
 ]

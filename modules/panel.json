@@ -1,0 +1,50 @@
+panel_dkh = { 
+  "init": function() {
+    window.addEventListener('load', function() {
+      for(let i = 0; i < windows.length; i++) {
+        windows[i]['win']['win'].style.display = 'none';
+        let btn = document.createElement('input');
+        btn.type = 'button';
+        btn.value = windows[i]['win']['header'].innerText;
+        btn.className = 'panel_dkh_button';
+        btn.addEventListener('click', function() {
+          if(windows[i]['win']['win'].style.display == 'none') {
+            windows[i]['win']['win'].style.display = '';
+            btn.className = 'panel_dkh_button_active';
+          }
+          else {
+            windows[i]['win']['win'].style.display = 'none';
+            btn.className = 'panel_dkh_button';
+          }
+        });
+        document.getElementById('panel_dkh').appendChild(btn);
+      }
+    });
+  },
+  "update": function() {
+    
+  },
+  "updateTime": 500,
+  "html": '\
+    <div class="panel_dkh" id="panel_dkh"></div>\
+  ',
+  "css": '\
+    .panel_dkh {\
+      background-color: #ccc;\
+    }\
+    .panel_dkh_button {\
+      height: 40px;\
+      background-color: #ccc;\
+      border: none;\
+      outline: .5px solid #bbb;\
+      padding: 0 20px;\
+}\
+    .panel_dkh_button_active {\
+      height: 40px;\
+      background-color: #ddd;\
+      border: none;\
+      outline: .5px solid #bbb;\
+      padding: 0 20px;\
+    }\
+  '
+} 

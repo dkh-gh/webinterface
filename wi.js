@@ -143,8 +143,10 @@ window.addEventListener('DOMContentLoaded', function() {
       panels[ii]['panel']['panel'].className = 'panel';
       panels[ii]['panel']['panel'].style.width = modules[i]['panel']['width'];
       panels[ii]['panel']['panel'].style.height = modules[i]['panel']['height'];
-      panels[ii]['panel']['panel'].style.left = modules[i]['panel']['left'];
-      panels[ii]['panel']['panel'].style.top = modules[i]['panel']['top'];
+      if(modules[i]['panel']['left']) panels[ii]['panel']['panel'].style.left = modules[i]['panel']['left'];
+      if(modules[i]['panel']['right']) panels[ii]['panel']['panel'].style.right = modules[i]['panel']['right'];
+      if(modules[i]['panel']['top']) panels[ii]['panel']['panel'].style.top = modules[i]['panel']['top'];
+      if(modules[i]['panel']['bottom']) panels[ii]['panel']['panel'].style.bottom = modules[i]['panel']['bottom'];
       // local
       panels[ii]['panel']['panel']['body'] = document.createElement('div');
       panels[ii]['panel']['panel'].appendChild(panels[ii]['panel']['panel']['body']);

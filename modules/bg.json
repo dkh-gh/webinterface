@@ -7,11 +7,11 @@ background_dkh = {
         document.getElementById('background_dkh').style.backgroundImage = 'url(http://холостов.рф/siteFiles/img/bg/' + parseInt(Math.random()*19) + '.jpg)';
       document.getElementById('background_dkh').addEventListener('contextmenu', function(e) {
         background_dkh_new = prompt('url новой фоновой картинки:');
-        if(background_dkh_new != '' && background_dkh_new != null) {
-          document.getElementById('background_dkh').style.backgroundImage = 'url(' + background_dkh_new + ')';
-          localStorage.setItem('background_dkh', background_dkh_new);
+        if(background_dkh_new == '' || background_dkh_new == null) {
+          background_dkh_new = 'http://холостов.рф/siteFiles/img/bg/' + parseInt(Math.random()*19) + '.jpg';
         }
-        else document.getElementById('background_dkh').style.backgroundImage = 'url(http://холостов.рф/siteFiles/img/bg/' + parseInt(Math.random()*19) + '.jpg)';
+        document.getElementById('background_dkh').style.backgroundImage = 'url(' + background_dkh_new + ')';
+        localStorage.setItem('background_dkh', background_dkh_new);
         e.preventDefault();
       });
     });
